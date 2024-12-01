@@ -1,0 +1,8 @@
+[Warning] [28-11-2024 19:01:15] The Disk is in progress encryption  ExitCode : 1
+[Success] [28-11-2024 19:01:35] The Disk is Completly Crypted
+[29/11/2024-18:03:39 Success] The Disk is Completly Crypted
+[29/11/2024-18:04:05][Success] The Disk is Completly Crypted
+[29/11/2024-18:04:28][Error] Not informations for this disk  ExitCode : 1
+[29/11/2024-18:05:04][Error] Not informations for this disk,ExitCode:1
+[29/11/2024-18:05:15][Error] Not informations for this disk,ExitCode:1
+[29/11/2024-18:39:56][Error] Not informations for this disk,ExitCode:1

@@ -1,0 +1,5 @@
+[30/11/2024-21:32:47][INFO] Process trouve : putty
+[30/11/2024-21:33:05][INFO] Process trouve : notepad++
+[30/11/2024-21:33:14][INFO] Process trouve : notepad++
+[30/11/2024-21:33:14][INFO] Process trouve : putty
+[30/11/2024-21:33:29][WARNING] Not found Process

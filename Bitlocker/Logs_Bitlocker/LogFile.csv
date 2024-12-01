@@ -1,0 +1,4 @@
+"Timestamp","Event","Message"
+"2024-11-29T18:42:01","Error","Not informations for this disk,ExitCode:1"
+"2024/11/29-18:45:01","Error","Not informations for this disk,ExitCode:1"
+"2024/11/29-18:46:02","Success","The Disk is Completly Crypted"
