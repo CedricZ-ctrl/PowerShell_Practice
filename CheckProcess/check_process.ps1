@@ -1,8 +1,22 @@
-####### script powershell check process and kill process specified ###############
+#######################################################################################
+# Script : check_process_and_kill.ps1
+# Description : This script checks if specified processes are running or stopped.
+#               It logs the status of each process into a log file.
+#               If a process is found, it logs an info message; if not, it logs a warning.
+#               Additionally, it can be modified to kill processes if needed.
+# Author : Cédric Zapart
+# Date Created : 01/12/2024
+# Last Modified : N/A
+#
+#######################################################################################
 
-######
-#settings logs
-#######
+# The script monitors processes ("PuTTY", "Notepad++" BUT you can define the processes to you want  ) to determine their running status.
+# If a process is running, the script logs an info message.
+# If a process is not running, the script logs a warning message.
+# The script can be further extended to kill the processes if desired.
+
+# Settings for logging
+#######################################################################################
 
 
 function Write-log {

@@ -1,12 +1,20 @@
-#################### Check if hard disk is Encrypted ######################
+#######################################################################################
+# Script : check_hard_disk_encryption.ps1
+# Description : This script checks if the hard disk (C:) is encrypted using BitLocker.
+#               It logs the status of the disk (Encrypted, Decrypted, or Encryption In Progress)
+#               and generates an error code if the disk is not encrypted.
+# Author : Cédric Zapart
+# Date Created : 22/11/2024
+# Last Modified : N/A
+#######################################################################################
 
+# The script checks the encryption status of the system drive (C:).
+# It logs the status and increments an exit code depending on whether the disk is fully encrypted, 
+# in the process of being encrypted, or fully decrypted.
+# If the disk is not encrypted or in progress, it generates an error log.
 
-# Creator : Zapart Cédric
-# Date : 22/11/2024
-# Target: check if hard disk is encrypted and generate a code error if disk is not encrypted.
-##########################################################################################################################
-
-# defined generate log and logpath 
+# Log generation and log path
+#######################################################################################
 
 $ExitCode = 0
 function Write-log {
@@ -36,10 +44,12 @@ function testdisk ()   {
     return $checkstatus
 }
 
-#variable test
+#Test variable to simulate disk encryption status (For testing purposes)
 $statedisk = "FullyDecrypted"
 
-#####
+
+# Encryption status handling using switch-case
+#######################################################################################
 switch ($statedisk) {
 
 "EncryptionInProgress" {

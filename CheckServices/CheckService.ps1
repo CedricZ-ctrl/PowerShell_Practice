@@ -1,5 +1,25 @@
 
+#######################################################################################
+# Script : check_services_status.ps1
+# Description : This script checks the status of specified services (wuauserv, Spooler, Dhcp).
+#               If a service is stopped, it attempts to start it and logs the action.
+#               If the service is already running, it logs that the service is running.
+#               If the service is in an unknown state, it logs a warning.
+# Author : Cédric Zapart
+# Date Created : 30/11/2024
+# Last Modified : N/A
+# License : MIT (Optional - Adjust as needed)
+# Version : 1.0
+#######################################################################################
 
+# The script monitors the status of a list of services (wuauserv, Spooler, Dhcp) and performs the following:
+# - If the service is running, logs the status as "Running."
+# - If the service is stopped, it starts the service and logs the action.
+# - If the service is in an unknown state, logs a warning.
+# All actions are logged into a specified log file with timestamps.
+
+# Log generation and log path
+#######################################################################################
 
 function Write-log {
     param(
@@ -21,6 +41,10 @@ function Write-log {
     $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
+
+
+# List of services to check
+#######################################################################################
 
     $listservices = "wuauserv","Spooler","Dhcp"
 
