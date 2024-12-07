@@ -27,11 +27,11 @@ function Write-log {
         [string]$Event
     )
     # Path logs
-    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\CheckServices\LogFile.txt"
+    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices\LogFile.txt"
     
     #check if path log is not present
-    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\CheckServices")) {
-        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\CheckServices" -Force
+    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices")) {
+        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices" -Force
     }
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
@@ -50,7 +50,7 @@ function Write-log {
 
     foreach ($services in $listservices) {
         Try{
-            $serviceStatus = get-service -Name $listservices 
+            $serviceStatus = get-service -Name $services
 
             if ($serviceStatus.Status -eq "Running") {
                 $Message = "Service '$services' is already Running"
@@ -71,3 +71,4 @@ function Write-log {
             Write-log -Message $Message -Event "ERROR"
         }
     }
+    exit 
