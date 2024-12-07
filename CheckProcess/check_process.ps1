@@ -25,11 +25,11 @@ function Write-log {
         [string]$Event
     )
     # Path logs
-    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\CheckProcess\LogFile.txt"
+    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess\LogFile.txt"
     
     #check if path log is not present
-    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\CheckProcess")) {
-        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\CheckProcess" -Force
+    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess")) {
+        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess" -Force
     }
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
@@ -45,21 +45,23 @@ $NameProcess = "PuTTY","Notepad++"
 
 function CheckProcess () {
     
-      $processrunning = (Get-Process -Name $NameProcess -ErrorAction SilentlyContinue | select ProcessName).ProcessName
-      return $processrunning
-}
+      $processrunning = (Get-Process -Name $NameProcess -ErrorAction SilentlyContinue | Select-Object ProcessName).ProcessName
+      
 
-$foundprocess = CheckProcess
-if ($foundprocess) {
-    foreach ($process in $foundprocess) {
-    $Message = "Process trouve : $process"
+if ($processrunning) {
+    foreach ($process in $processrunning) {
+    $Message = "Process is running : $process"
     Write-log -Event "INFO" -Message $Message
 }
 } else {
-    $Message = "Not found Process"
+    
+    $Message = "Not found $process"
     Write-log -Event "WARNING" -Message $Message
 }
 
+}
+
+CheckProcess 
 
 
 # switch (CheckProcess) {
