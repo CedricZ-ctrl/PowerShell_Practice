@@ -13,3 +13,21 @@
 [30/11/2024-22:05:47][INFO] Service 'wuauserv' is already Running
 [30/11/2024-22:05:47][INFO] Service 'Spooler' is already Running
 [30/11/2024-22:05:47][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:31:08][INFO] Service 'wuauserv' is already Running
+[07/12/2024-23:31:08][INFO] Service 'Spooler' is already Running
+[07/12/2024-23:31:08][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:31:31][INFO] Service 'wuauserv' is already Running
+[07/12/2024-23:31:31][INFO] Service 'Spooler' is already Running
+[07/12/2024-23:31:31][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:35:54][INFO] Servce 'wuauserv' was stopped and now he's started
+[07/12/2024-23:35:54][INFO] Servce 'Spooler' was stopped and now he's started
+[07/12/2024-23:35:54][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:47:28][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:48:28][INFO] Service 'wuauserv' is already Running
+[07/12/2024-23:48:29][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:52:27][INFO] Service 'wuauserv' is already Running
+[07/12/2024-23:52:27][INFO] Service 'Spooler' is already Running
+[07/12/2024-23:52:27][INFO] Service 'Dhcp' is already Running
+[07/12/2024-23:53:56][INFO] Service 'wuauserv' is already Running
+[07/12/2024-23:53:56][INFO] Servce 'Spooler' was stopped and now he's started
+[07/12/2024-23:53:56][INFO] Service 'Dhcp' is already Running
