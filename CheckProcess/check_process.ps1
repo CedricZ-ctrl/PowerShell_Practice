@@ -45,20 +45,29 @@ $NameProcess = "PuTTY","Notepad++"
 
 function CheckProcess () {
     
-      $processrunning = (Get-Process -Name $NameProcess -ErrorAction SilentlyContinue | Select-Object ProcessName).ProcessName
+      $processrunning = (Get-Process -Name $NameProcess -ErrorAction SilentlyContinue | select ProcessName).ProcessName
       
+    foreach ($process in $NameProcess) {
 
-if ($processrunning) {
-    foreach ($process in $processrunning) {
+        if($processrunning -contains $process) {
     $Message = "Process is running : $process"
     Write-log -Event "INFO" -Message $Message
-}
+
 } else {
     
-    $Message = "Not found $process"
+    $Message = "Not found $process, starting now ... "
     Write-log -Event "WARNING" -Message $Message
+    
+    try {
+        Start-Process $process 
+        $Message = " Starting $process ...."
+        Write-log -Event "INFO" -Message $Message
+    } catch {
+        $Message = "failed to start $process check exit code for more informations"
+        write-loge -Event "WARNING" -Message $Message
+    }
+    }
 }
-
 }
 
 CheckProcess 
