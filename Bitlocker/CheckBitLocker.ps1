@@ -23,11 +23,11 @@ function Write-log {
         [string]$Event
     )
     # Path logs
-    $logfilepath = "B:\VSCode_Exercice\Logs_Bitlocker\LogFile.txt"
+    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker\LogFile.txt"
     
     #check if path log is not present
-    if (!(Test-Path -Path "B:\VSCode_Exercice\Logs_Bitlocker")) {
-        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Logs_Bitlocker" -Force
+    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker")) {
+        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker" -Force
     }
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
@@ -66,7 +66,7 @@ switch ($statedisk) {
 
  "FullyDecrypted" {
     $ExitCode++
-    $Message = "Not informations for this disk,ExitCode:$($ExitCode)"
+    $Message = "The disk is not encrypted ExitCode:$($ExitCode)"
     Write-log -Message $Message -Event "Error"
 }
 
