@@ -6,3 +6,5 @@
 [29/11/2024-18:05:04][Error] Not informations for this disk,ExitCode:1
 [29/11/2024-18:05:15][Error] Not informations for this disk,ExitCode:1
 [29/11/2024-18:39:56][Error] Not informations for this disk,ExitCode:1
+[07/12/2024-23:58:34][Error] Not informations for this disk,ExitCode:1
+[07/12/2024-23:59:54][Error] The disk is not encrypted ExitCode:1
