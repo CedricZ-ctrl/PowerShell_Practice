@@ -41,6 +41,7 @@ function Write-log {
 }
 
 
+
 $NameProcess = "PuTTY","Notepad++"
 
 function CheckProcess () {
@@ -60,8 +61,20 @@ function CheckProcess () {
     
     try {
         Start-Process $process 
-        $Message = " Starting $process ...."
-        Write-log -Event "INFO" -Message $Message
+        Start-Sleep -Seconds 1 
+
+        if(Get-Process $process -ErrorAction SilentlyContinue) {
+        
+            $Message = " The Process  $process has started ! "
+            Write-log -Event "INFO" -Message $Message
+
+        } else {
+
+            $Message = "failed to start $process check exit code for more informations"
+            Write-log -Event "WARNING" -Message $Message
+
+         }
+
     } catch {
         $Message = "failed to start $process check exit code for more informations"
         write-loge -Event "WARNING" -Message $Message
@@ -72,21 +85,4 @@ function CheckProcess () {
 
 CheckProcess 
 
-
-# switch (CheckProcess) {
-
-#     "notepad++"{
-#         $Message = "Notepad found in process windows"
-#         Write-log -Event "INFO" -Message $Message
-
-#     }
-#     "putty"{
-#         $Message = "Putty found in process windows"
-#         Write-log -Event "INFO" -Message $Message
-
-#     }
-#     default {
-#         $Message = "Putty and Notepad++,not found process in list"
-#         Write-log -Event "WARNING" -Message $Message
-#     }
-# }
+exit 
