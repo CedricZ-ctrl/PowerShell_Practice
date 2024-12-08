@@ -1,28 +1,47 @@
+function Write-log {
+    param(
+        [string]$Message,
+        [string]$Event
+    )
+    # Path logs
+    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem\LogFile.txt"
+    
+    #check if path log is not present
+    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem")) {
+        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem" -Force
+    }
+    if (!(Test-Path -Path $logfilepath)) {
+        New-Item -ItemType File -Path $logfilepath -Force
+    }
 
-### pull informations Bios on system 
-
-Get-CimInstance -ClassName Win32_BIOS 
-
-### pull information processor and type Socket 
-Get-CimInstance -ClassName Win32_Processor | Select-Object Name,SocketDesignation
-
-#### pull information general on system 
-
-Get-CimInstance -ClassName Win32_ComputerSystem 
-
-####### pull information physical memory (RAM)
-PS B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem> Get-CimInstance -ClassName Win32_PhysicalMemoryArray
-
-Name             MemoryDevices                                MaxCapacity                                  Model
-----             -------------                                -----------                                  -----
-Bloc de mémoi... 4                                            134217728
+    # Ajoute le message au fichier
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+    Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
+}
 
 
-PS B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem> Get-CimInstance -ClassName Win32_PhysicalMemoryLocation
+function InventorySystem () {
 
-GroupComponent                                              PartComponent                                    LocationWithinContainer PSComputerName
---------------                                              -------------                                    ----------------------- --------------
-Win32_PhysicalMemoryArray (Tag = "Physical Memory Array 0") Win32_PhysicalMemory (Tag = "Physical Memory 0")
-Win32_PhysicalMemoryArray (Tag = "Physical Memory Array 0") Win32_PhysicalMemory (Tag = "Physical Memory 1")
-Win32_PhysicalMemoryArray (Tag = "Physical Memory Array 0") Win32_PhysicalMemory (Tag = "Physical Memory 2")
-Win32_PhysicalMemoryArray (Tag = "Physical Memory Array 0") Win32_PhysicalMemory (Tag = "Physical Memory 3")
+    $infosystem = @{
+
+        #Informations Bios
+        NameBIOS = (Get-CimInstance -ClassName Win32_BIOS).Name
+        VersionBios = (Get-CimInstance -ClassName Win32_BIOS).Version
+
+        #Informations Processor and socket
+        NameProc = (Get-CimInstance -ClassName Win32_Processor).Name
+        Socketproc= (Get-CimInstance -ClassName Win32_Processor).SocketDesignation
+
+        #informations System, computer name, domain allowed and model motherboard
+        NamePC = (Get-CimInstance -ClassName Win32_ComputerSystem).Name
+        DomainPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Domain
+        modelPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Model
+    }
+
+    foreach ($key in $infosystem.Keys) {
+
+    $Message  = "$key : $($infosystem[$key])   "
+    Write-log -Event "Informations System" -Message $Message
+    }
+}
+InventorySystem
