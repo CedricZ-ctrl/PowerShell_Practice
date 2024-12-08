@@ -45,12 +45,12 @@ function testdisk ()   {
 }
 
 #Test variable to simulate disk encryption status (For testing purposes)
-$statedisk = "FullyDecrypted"
+#$statedisk = "FullyDecrypted"
 
 
 # Encryption status handling using switch-case
 #######################################################################################
-switch ($statedisk) {
+switch (testdisk) {
 
 "EncryptionInProgress" {
     $ExitCode++
