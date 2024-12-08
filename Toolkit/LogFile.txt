@@ -1,0 +1,21 @@
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit not present, creating C:\ToolKit succes
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData not present, creating C:\ToolKit\UserData succes
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData\Documents not present, creating C:\ToolKit\UserData\Documents succes
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData\Download not present, creating C:\ToolKit\UserData\Download succes
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData\Logs not present, creating C:\ToolKit\UserData\Logs succes
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit\Scripts not present, creating C:\ToolKit\Scripts succes
+[08/12/2024-21:59:22][INFO] directory C:\ToolKit\Backup not present, creating C:\ToolKit\Backup succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit not present, creating C:\ToolKit succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData not present, creating C:\ToolKit\UserData succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData\Documents not present, creating C:\ToolKit\UserData\Documents succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData\Download not present, creating C:\ToolKit\UserData\Download succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData\Logs not present, creating C:\ToolKit\UserData\Logs succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit\Scripts not present, creating C:\ToolKit\Scripts succes
+[08/12/2024-22:00:23][INFO] directory C:\ToolKit\Backup not present, creating C:\ToolKit\Backup succes
+[08/12/2024-22:00:55][INFO] All directory already 
+[08/12/2024-22:00:55][INFO] All directory already 
+[08/12/2024-22:00:55][INFO] All directory already 
+[08/12/2024-22:00:55][INFO] All directory already 
+[08/12/2024-22:00:55][INFO] All directory already 
+[08/12/2024-22:00:55][INFO] All directory already 
+[08/12/2024-22:00:55][INFO] All directory already 
