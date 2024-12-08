@@ -3,7 +3,7 @@ function Write-log {
         [string]$Message,
         [string]$Event
     )
-    # Path logs
+    # Path logs 
     $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem\LogFile.txt"
     
     #check if path log is not present
@@ -21,6 +21,8 @@ function Write-log {
 
 
 function InventorySystem () {
+try {
+    
 
     $infosystem = @{
 
@@ -37,11 +39,17 @@ function InventorySystem () {
         DomainPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Domain
         modelPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Model
     }
+    $Message = "=== Start Inventory ==="
+    Write-log -Event "Start Inventory" -Message $Message
 
     foreach ($key in $infosystem.Keys) {
 
     $Message  = "$key : $($infosystem[$key])   "
     Write-log -Event "Informations System" -Message $Message
     }
+  } catch {
+    Write-log -Event "ERROR" -Message "Error collecting system information : $_ "
+  }
 }
+
 InventorySystem
