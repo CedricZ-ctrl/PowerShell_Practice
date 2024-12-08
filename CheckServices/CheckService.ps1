@@ -26,10 +26,10 @@ function Write-log {
         [string]$Message,
         [string]$Event
     )
-    # Path logs
+    # Path logs\ MODIFY THE PATH TO SUIT  FOR YOUR NEED
     $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices\LogFile.txt"
     
-    #check if path log is not present
+    #check if path log is not present \COPY AND PASTE, YOUR LOGFILE
     if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices")) {
         New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices" -Force
     }
@@ -37,7 +37,7 @@ function Write-log {
         New-Item -ItemType File -Path $logfilepath -Force
     }
 
-    # Ajoute le message au fichier
+    #Add a message and event in your log
     $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
