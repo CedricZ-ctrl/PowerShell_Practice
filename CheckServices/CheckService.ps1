@@ -46,7 +46,7 @@ function Write-log {
 # List of services to check
 #######################################################################################
 
-    $listservices = "wuauserv","Spooler","Dhcp"
+    $listservices = "wuauserv","Spooler","Dhcp","Schedule"
 
     foreach ($services in $listservices) {
         Try{
