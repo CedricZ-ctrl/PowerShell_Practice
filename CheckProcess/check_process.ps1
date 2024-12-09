@@ -1,49 +1,57 @@
-#######################################################################################
-# Script : check_process_and_kill.ps1
-# Description : This script checks if specified processes are running or stopped.
-#               It logs the status of each process into a log file.
-#               If a process is found, it logs an info message; if not, it logs a warning.
-#               Additionally, it can be modified to kill processes if needed.
-# Author : Cédric Zapart
-# Date Created : 01/12/2024
-# Last Modified : N/A
+#***************************************************************************************************************
+#                                                                                                              *
+# file : check_process.ps1                                                                                     *
+#                                                                                                              *
+# Version : 1.0                                                                                                *
+#                                                                                                              *
+# Date : 09/12/2024                                                                                            *
+#                                                                                                              *
+# Description : Check if this process is in running or stopped, and restart the process if stopped             *       
+#                                                                                                              *
+#***************************************************************************************************************
+
+# ======================================================================================
+#  VARIABLE DECLARATIONS                                                               
+#=======================================================================================
 #
-#######################################################################################
+# code exit initial
+$ExitCode = 0
 
-# The script monitors processes ("PuTTY", "Notepad++" BUT you can define the processes to you want  ) to determine their running status.
-# If a process is running, the script logs an info message.
-# If a process is not running, the script logs a warning message.
-# The script can be further extended to kill the processes if desired.
+# #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
+$LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess"
 
-# Settings for logging
-#######################################################################################
+# Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
+$logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess\LogFile.txt"
 
+# add process you want check \MODIFY NAME PROCESS TO SUIT FOR YOU NEED
+$NameProcess = "PuTTY","Notepad++"
 
+#==================================================================================================================
+# FUNCTION DECLARATION
+#==================================================================================================================
+#
+# this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
     param(
         [string]$Message,
         [string]$Event
     )
-    # Path logs\ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess\LogFile.txt"
-    
-    #check if path log is not present \COPY AND PASTE, YOUR LOGFILE
-    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess")) {
-        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess" -Force
+
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -ItemType Directory -Path $LogDirectory -Force
     }
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
     }
 
-    # Add a message and event in your log
+    
     $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
 
 
-# add process you want check
-$NameProcess = "PuTTY","Notepad++"
-
+#
+# this function check if $NameProces is running or not, if not running so we start process, and write information in $logfilepath with the function Write-log
 function CheckProcess () {
     
       $processrunning = (Get-Process -Name $NameProcess -ErrorAction SilentlyContinue | select ProcessName).ProcessName
@@ -77,12 +85,19 @@ function CheckProcess () {
 
     } catch {
         $Message = "failed to start $process check exit code for more informations"
-        write-loge -Event "WARNING" -Message $Message
+        Write-log -Event "WARNING" -Message $Message
     }
     }
 }
 }
+
+
+#==================================================================================================================
+# MAIN 
+#==================================================================================================================
 
 CheckProcess 
 
-exit 
+#======================================================================================================================
+# END OF SCRIPT
+#======================================================================================================================
