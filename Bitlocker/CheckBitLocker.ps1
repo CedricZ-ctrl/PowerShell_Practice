@@ -1,39 +1,48 @@
-#######################################################################################
-# Script : check_hard_disk_encryption.ps1
-# Description : This script checks if the hard disk (C:) is encrypted using BitLocker.
-#               It logs the status of the disk (Encrypted, Decrypted, or Encryption In Progress)
-#               and generates an error code if the disk is not encrypted.
-# Author : Cédric Zapart
-# Date Created : 22/11/2024
-# Last Modified : N/A
-#######################################################################################
+#****************************************************************************************
+#                                                                                       *
+# file : CheckBitlocker.ps1                                                             *
+#                                                                                       *
+# Version : 1.0                                                                         *
+#                                                                                       *
+# Date : 09/12/2024                                                                     *
+#                                                                                       *
+# Description : Check Status of Disk system "C:" if encrypted or no                     *
+#                                                                                       *
+#****************************************************************************************
 
-# The script checks the encryption status of the system drive (C:).
-# It logs the status and increments an exit code depending on whether the disk is fully encrypted, 
-# in the process of being encrypted, or fully decrypted.
-# If the disk is not encrypted or in progress, it generates an error log.
-
-# Log generation and log path
-#######################################################################################
-
+# ======================================================================================
+#  VARIABLE DECLARATIONS                                                               
+#=======================================================================================
+# 
+# code exit initial
 $ExitCode = 0
+
+# #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
+$LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker"
+
+# Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
+$logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker\LogFile.txt"
+
+#variable for testing any state of disk in switch 
+$statedisk = "EncryptionInProgress" # fore exemple
+
+#==================================================================================================================
+# FUNCTION DECLARATION
+#==================================================================================================================
 function Write-log {
     param(
         [string]$Message,
         [string]$Event
     )
-    # Path logs
-    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker\LogFile.txt"
     
-    #check if path log is not present
-    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker")) {
-        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker" -Force
+    if (!(Test-Path -Path $LogDirectory )) {
+        New-Item -ItemType Directory -Path $LogDirectory -Force
     }
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
     }
 
-    # Ajoute le message au fichier
+    # Add a message and event in your log
     $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
@@ -44,12 +53,11 @@ function testdisk ()   {
     return $checkstatus
 }
 
-#Test variable to simulate disk encryption status (For testing purposes)
-#$statedisk = "FullyDecrypted"
+#==================================================================================================================
+# MAIN 
+#==================================================================================================================
 
 
-# Encryption status handling using switch-case
-#######################################################################################
 switch (testdisk) {
 
 "EncryptionInProgress" {
@@ -72,31 +80,8 @@ switch (testdisk) {
 
 }
 
+exit $ExitCode++
 
-
-
-# try {
-# # this variable she's use for test any situation of return $checkstatus in conditions 
-# #$crypted="EncryptionInProgress"
-
-# if ((testdisk) -eq "FullyDecrypted")
-#     {   
-#         $Message = "CRITICAL :the disk is not encrypted please contact your administrator"
-#         Write-log -Message $Message
-#         throw $Message
-#     }
-#     ElseIF((testdisk) -eq "EncryptionInProgress")
-#     {   
-#         $Message = "WARNING:  the disk is in progress encryption "
-#         Write-log -Message $Message
-#         throw $Message
-        
-#     }
-#     ElseIF ((testdisk) -eq "FullyEncrypted") {
-#          Write-Output "Your disk is encrypted"       
-#     }
-# } catch {
-#     $errormessage = "Error detected : $_"
-#     Write-Output $errormessage
-#     Write-log -Message $Message
-# }
+#======================================================================================================================
+# END OF SCRIPT
+#======================================================================================================================
