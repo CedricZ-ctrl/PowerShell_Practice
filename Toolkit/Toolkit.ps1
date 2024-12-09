@@ -1,24 +1,54 @@
+#******************************************************************************************************************************
+#                                                                                                                             *
+# file : Toolkit.ps1                                                                                                          *
+#                                                                                                                             *
+# Version : 1.0                                                                                                               *
+#                                                                                                                             *
+# Date : 09/12/2024                                                                                                           *
+#                                                                                                                             *
+# Description : this script create an tree structure, Improvements to come                                                    *
+#                                                                                                                             *
+#******************************************************************************************************************************
+
+# ======================================================================================
+#  VARIABLE DECLARATIONS                                                               
+#=======================================================================================
+#
+# code exit initial
+$ExitCode = 0
+
+
+#Path LogDirectory\ MODIFY THE PATH TO SUIT  FOR YOUR NEED
+$LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit"
+
+# Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
+ $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit\LogFile.txt"
+
+
+
+#==================================================================================================================
+# FUNCTION DECLARATION
+#==================================================================================================================
+#
+#this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
     param(
         [string]$Message,
         [string]$Event
     )
-    # Path logs\ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-    $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit\LogFile.txt"
-    
-    #check if path log is not present \COPY AND PASTE, YOUR LOGFILE
-    if (!(Test-Path -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit")) {
-        New-Item -ItemType Directory -Path "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices" -Force
+
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -ItemType Directory -Path $LogDirectory -Force
     }
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
     }
 
-    #Add a message and event in your log
+    
     $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
-
+# this function create tree structure if latter don't created or if Directory is missing and  write informations in log with function write log
 function SetDirectory () {
 
     $Directory = @("C:\ToolKit",
@@ -43,7 +73,14 @@ function SetDirectory () {
   }
 }
 
+#==================================================================================================================
+# MAIN 
+#==================================================================================================================
 SetDirectory 
 
-exit 
+exit $ExitCode++
 
+
+#======================================================================================================================
+# END OF SCRIPT
+#======================================================================================================================
