@@ -57,28 +57,40 @@ function SetDirectory () {
                    "C:\ToolKit\UserData\Download",
                    "C:\ToolKit\UserData\Logs",
                    "C:\ToolKit\Scripts",
-                   "C:\ToolKit\Backup") 
+                   "C:\ToolKit\Backup",
+                   "C:\Windows\System32\testdir") 
 
-    foreach ($dir in $Directory) {
+foreach ($dir in $Directory) {
+
+    try {
         if (!(Test-Path -Path $dir)) {
-            New-Item -Path $dir -ItemType Directory | New-Item -Path $dir -ItemType File -Name Readme.txt
-            $Message = "directory $dir not present, creating $dir succes"
+            New-Item -Path $dir -ItemType Directory -ErrorAction Stop -Force
+             New-Item -Path $dir -ItemType File -Name Readme.txt -ErrorAction Stop -Force
+
+            $Message = "Creating missing directories : $dir "
             Write-log -Event "INFO" -Message $Message
-        }
+        
     
-    else {
-        $Message = "All directory already "
+        } else {
+        $Message = "All directory already : $dir "
         Write-log -Event "INFO" -Message $Message
+        
+        }
+    } catch {
+        $ExitCode = 1
+        $Message = "Failed during creating directory : $dir : Exitcode: $($ExitCode) : $_"
+        Write-log -Event "WARNING" -Message $Message
+        }
     }
-  }
 }
 
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
+
 SetDirectory 
 
-exit $ExitCode++
+
 
 
 #======================================================================================================================
