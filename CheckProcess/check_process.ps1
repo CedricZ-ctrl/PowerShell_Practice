@@ -24,7 +24,7 @@ $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Che
 $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess\LogFile.txt"
 
 # add process you want check \MODIFY NAME PROCESS TO SUIT FOR YOU NEED
-$NameProcess = "PuTTY","Notepad++"
+$NameProcess = "PuTTY","Notepad++"   #"processus_unknow" it's a fake processus for generate an error in log with the try-catch, check the logs for examples
 
 #==================================================================================================================
 # FUNCTION DECLARATION
@@ -53,44 +53,35 @@ function Write-log {
 #
 # this function check if $NameProces is running or not, if not running so we start process, and write information in $logfilepath with the function Write-log
 function CheckProcess () {
-    
+try {   
       $processrunning = (Get-Process -Name $NameProcess -ErrorAction SilentlyContinue | select ProcessName).ProcessName
       
     foreach ($process in $NameProcess) {
 
         if($processrunning -contains $process) {
-    $Message = "Process is running : $process"
-    Write-log -Event "INFO" -Message $Message
+            $Message = "Process is running : $process"
+            Write-log -Event "INFO" -Message $Message
 
-} else {
-    
-    $Message = "Not found $process, starting now ... "
-    Write-log -Event "WARNING" -Message $Message
-    
-    try {
-        Start-Process $process 
-        Start-Sleep -Seconds 1 
+    } else {
+            $Message = "Not found $process, starting now ... "
+            Write-log -Event "WARNING" -Message $Message
 
+            Start-Process $process 
+            Start-Sleep -Seconds 1 
+    }
         if(Get-Process $process -ErrorAction SilentlyContinue) {
         
             $Message = " The Process  $process has started ! "
             Write-log -Event "INFO" -Message $Message
-
-        } else {
-
-            $Message = "failed to start $process check exit code for more informations"
-            Write-log -Event "WARNING" -Message $Message
-
-         }
+        }
+    } 
 
     } catch {
-        $Message = "failed to start $process check exit code for more informations"
+        $ExitCode = 1
+        $Message = "failed to start $process, Exitcode $($ExitCode):$_"
         Write-log -Event "WARNING" -Message $Message
     }
-    }
 }
-}
-
 
 #==================================================================================================================
 # MAIN 
