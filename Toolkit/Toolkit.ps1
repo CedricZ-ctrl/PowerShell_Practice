@@ -51,18 +51,19 @@ function Write-log {
 # this function create tree structure if latter don't created or if Directory is missing and  write informations in log with function write log
 function SetDirectory () {
 
+try {
     $Directory = @("C:\ToolKit",
                    "C:\ToolKit\UserData",
                    "C:\ToolKit\UserData\Documents",
                    "C:\ToolKit\UserData\Download",
                    "C:\ToolKit\UserData\Logs",
                    "C:\ToolKit\Scripts",
-                   "C:\ToolKit\Backup",
-                   "C:\Windows\System32\testdir") 
+                   "C:\ToolKit\Backup")
+
+                   # this directory is a test for tested the catch in try-catch, this error generate is a permissions denied on systeme 32 of windows
+                    # "C:\Windows\System32\testdir") 
 
 foreach ($dir in $Directory) {
-
-    try {
         if (!(Test-Path -Path $dir)) {
             New-Item -Path $dir -ItemType Directory -ErrorAction Stop -Force
              New-Item -Path $dir -ItemType File -Name Readme.txt -ErrorAction Stop -Force
@@ -76,20 +77,20 @@ foreach ($dir in $Directory) {
         Write-log -Event "INFO" -Message $Message
         
         }
-    } catch {
-        $ExitCode = 1
-        $Message = "Failed during creating directory : $dir : Exitcode: $($ExitCode) : $_"
-        Write-log -Event "WARNING" -Message $Message
+    }
+} catch {
+    $ExitCode = 1
+    $Message = "Failed during creating directory : $dir : Exitcode: $($ExitCode) : $_"
+    Write-log -Event "WARNING" -Message $Message
         }
     }
-}
+
 
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
 
 SetDirectory 
-
 
 
 
