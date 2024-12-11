@@ -1,21 +1,23 @@
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit not present, creating C:\ToolKit succes
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData not present, creating C:\ToolKit\UserData succes
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData\Documents not present, creating C:\ToolKit\UserData\Documents succes
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData\Download not present, creating C:\ToolKit\UserData\Download succes
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit\UserData\Logs not present, creating C:\ToolKit\UserData\Logs succes
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit\Scripts not present, creating C:\ToolKit\Scripts succes
-[08/12/2024-21:59:22][INFO] directory C:\ToolKit\Backup not present, creating C:\ToolKit\Backup succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit not present, creating C:\ToolKit succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData not present, creating C:\ToolKit\UserData succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData\Documents not present, creating C:\ToolKit\UserData\Documents succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData\Download not present, creating C:\ToolKit\UserData\Download succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit\UserData\Logs not present, creating C:\ToolKit\UserData\Logs succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit\Scripts not present, creating C:\ToolKit\Scripts succes
-[08/12/2024-22:00:23][INFO] directory C:\ToolKit\Backup not present, creating C:\ToolKit\Backup succes
-[08/12/2024-22:00:55][INFO] All directory already 
-[08/12/2024-22:00:55][INFO] All directory already 
-[08/12/2024-22:00:55][INFO] All directory already 
-[08/12/2024-22:00:55][INFO] All directory already 
-[08/12/2024-22:00:55][INFO] All directory already 
-[08/12/2024-22:00:55][INFO] All directory already 
-[08/12/2024-22:00:55][INFO] All directory already 
+
+[10/12/2024-22:04:09][INFO] All directory already : C:\ToolKit\UserData 
+[10/12/2024-22:04:09][INFO] All directory already : C:\ToolKit\UserData\Documents 
+[10/12/2024-22:04:09][INFO] All directory already : C:\ToolKit\UserData\Download 
+[10/12/2024-22:04:09][INFO] All directory already : C:\ToolKit\UserData\Logs 
+[10/12/2024-22:04:09][INFO] All directory already : C:\ToolKit\Scripts 
+[10/12/2024-22:04:09][INFO] All directory already : C:\ToolKit\Backup 
+[10/12/2024-22:04:09][WARNING] Failed during creating directory : C:\Windows\System32\testdir : Exitcode: 1 : Access to the path 'C:\Windows\System32\testdir' is denied.
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit 
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit\UserData 
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit\UserData\Documents 
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit\UserData\Download 
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit\UserData\Logs 
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit\Scripts 
+[11/12/2024-16:31:04][INFO] All directory already : C:\ToolKit\Backup 
+[11/12/2024-16:31:04][WARNING] Failed during creating directory : C:\Windows\System32\testdir : Exitcode: 1 : Access to the path 'C:\Windows\System32\testdir' is denied.
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit 
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\UserData 
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\UserData\Documents 
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\UserData\Download 
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\UserData\Logs 
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\Scripts 
+[11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\Backup 
