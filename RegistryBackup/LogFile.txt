@@ -1,0 +1,2 @@
+[19/12/2024-20:50:26][INFO] the backup of the key registry B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Notepad.reg is create
+[19/12/2024-20:50:48][INFO] Registry restored from : B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Notepad.reg
