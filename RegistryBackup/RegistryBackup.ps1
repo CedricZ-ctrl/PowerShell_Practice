@@ -6,7 +6,7 @@
 #                                                                                                                             *
 # Date : 18/12/2024                                                                                                           *
 #                                                                                                                             *
-# Description : Th*
+# Description : The goal of this script is create a registry backup of you choice
 #                                                                                                                             *
 #******************************************************************************************************************************
 
@@ -54,6 +54,8 @@ function Write-log {
 function ExportReg {
     try {
         if (!(Test-Path -Path $RegFile)) {
+
+         # choose the key registry you need 
         reg export HKLM\SOFTWARE\Microsoft\Notepad $RegFile
         $Message ="the backup of the key registry $RegFile is create"
         Write-log -Event "INFO" -Message $Message
@@ -94,16 +96,16 @@ function ImportReg {
 $Choice = Read-Host "What do you want ? Import or Export ?"
 
 
+
+#==================================================================================================================
+# MAIN 
+#==================================================================================================================
 switch ($Choice)
  {
     "Export" { ExportReg }
     "Import" { ImportReg }
     Default { Write-Host " invalid choice, exiting script"}
 }
-#==================================================================================================================
-# MAIN 
-#==================================================================================================================
-
 
 #======================================================================================================================
 # END OF SCRIPT
