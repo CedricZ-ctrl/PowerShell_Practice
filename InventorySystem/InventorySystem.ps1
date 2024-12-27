@@ -17,20 +17,15 @@
 # code exit initial
 $ExitCode = 0
 
-
 # #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem\"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
 $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\InventorySystem\LogFile.txt"
 
-
-
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
-#
-
 #
 # this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
@@ -54,8 +49,6 @@ function Write-log {
 # this function retrive information system computer name,domaine name, name bios, version bios,name processor, socket processor and write informations in log with function write log
 function InventorySystem () {
 try {
-    
-
     $infosystem = @{
 
         #Informations Bios
@@ -71,16 +64,21 @@ try {
         DomainPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Domain
         modelPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Model
     }
+
     $Message = "=== Start Inventory ==="
     Write-log -Event "Start Inventory" -Message $Message
 
+    # Here $infosystem.Keys get informations in $infosystem = @{NameBIOS,NameProc or Nampc and anymore}
+    # .keys is just key value in hashtable of $infosystem
     foreach ($key in $infosystem.Keys) {
 
     $Message  = "$key : $($infosystem[$key])   "
     Write-log -Event "Informations System" -Message $Message
     }
   } catch {
-    Write-log -Event "ERROR" -Message "Error collecting system information : $_ "
+    $ExitCode = 1
+    $Message = "Error collecting system information : $_ "
+    Write-log -Event "ERROR" -Message $Message
   }
 }
 
@@ -89,7 +87,7 @@ try {
 #==================================================================================================================
 
 InventorySystem
-exit $ExitCode++
+
 
 #======================================================================================================================
 # END OF SCRIPT

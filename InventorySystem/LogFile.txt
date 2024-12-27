@@ -6,3 +6,11 @@
 [08/12/2024-16:53:43][Informations System] Socketproc : AM4   
 [08/12/2024-16:53:43][Informations System] VersionBios : ALASKA - 1072009   
 [08/12/2024-16:53:43][Informations System] NameProc : AMD Ryzen 5 3600 6-Core Processor                 
+[27/12/2024-23:42:16][Start Inventory] === Start Inventory ===
+[27/12/2024-23:42:16][Informations System] NameProc : AMD Ryzen 5 3600 6-Core Processor                 
+[27/12/2024-23:42:16][Informations System] VersionBios : ALASKA - 1072009   
+[27/12/2024-23:42:16][Informations System] DomainPC : WORKGROUP   
+[27/12/2024-23:42:16][Informations System] modelPC : B550 AORUS ELITE V2   
+[27/12/2024-23:42:16][Informations System] Socketproc : AM4   
+[27/12/2024-23:42:16][Informations System] NameBIOS : F13   
+[27/12/2024-23:42:16][Informations System] NamePC : DESKTOP-8BB22F1   
