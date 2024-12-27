@@ -70,14 +70,15 @@ function Write-log {
             }
         }
         catch {
-            $Message = "Service '$service' could not be found or started. Error: $_"
+            $ExitCode = 1 
+            $Message = "Service '$service' could not be found or started:$($ExitCode): Error occurred: $_"
             Write-log -Message $Message -Event "ERROR"
         }
     }
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
-    exit $ExitCode++
+    
 
     
 #======================================================================================================================
