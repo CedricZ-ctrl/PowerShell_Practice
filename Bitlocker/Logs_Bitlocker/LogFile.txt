@@ -10,3 +10,4 @@
 [07/12/2024-23:59:54][Error] The disk is not encrypted ExitCode:1
 [08/12/2024-16:55:17][Error] The disk is not encrypted ExitCode:1
 [08/12/2024-16:56:25][Error] The disk is not encrypted ExitCode:1
+[09/12/2024-17:50:30][Error] The disk is not encrypted ExitCode:1

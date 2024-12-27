@@ -23,7 +23,9 @@ $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bit
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
 $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker\LogFile.txt"
 
-#variable for testing any state of disk in switch 
+#Here it's a variable for tested the differents value of switch (line 61) just modify the variable with values next : 
+# "EncryptionInProgress","FullyEncrypted" or "FullyDecrypted"
+# don't forget change testdisk by statedisk to tested
 $statedisk = "EncryptionInProgress" # fore exemple
 
 #==================================================================================================================
@@ -57,30 +59,30 @@ function testdisk ()   {
 # MAIN 
 #==================================================================================================================
 
-
 switch (testdisk) {
 
 "EncryptionInProgress" {
-    $ExitCode++
+    $ExitCode = 2
     $Message = "The Disk is in progress encryption,ExitCode:$($ExitCode)"
     Write-log -Message $Message -Event "Warning"
 }
 
 "FullyEncrypted" {
-    $Message = "The Disk is Completly Crypted"
+    $ExitCode = 0
+    $Message = "The Disk is Completly Crypted:$($ExitCode):"
     Write-log -Message $Message -Event "Success"
 
 }
 
  "FullyDecrypted" {
-    $ExitCode++
+    $ExitCode = 3
     $Message = "The disk is not encrypted ExitCode:$($ExitCode)"
     Write-log -Message $Message -Event "Error"
 }
 
 }
 
-exit $ExitCode++
+exit 
 
 #======================================================================================================================
 # END OF SCRIPT
