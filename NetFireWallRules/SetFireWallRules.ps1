@@ -23,9 +23,6 @@ $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\NetF
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
 $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\NetFireWallRules\LogFireWall.txt"
 
-#Path for the CSV report file
-$CsvReportPath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\NetFireWallRules\FireWallRules.csv"
-
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
