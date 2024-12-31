@@ -17,9 +17,6 @@
 # code exit initial
 $ExitCode = 0
 
-#intialize the variable for generate a rapport once script finish
-$report =@()
-
 #Path LogDirectory\ MODIFY THE PATH TO SUIT  FOR YOUR NEED
 $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\NetFireWallRules"
 
