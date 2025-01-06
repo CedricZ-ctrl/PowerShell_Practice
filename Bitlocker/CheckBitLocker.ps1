@@ -21,7 +21,7 @@ $ExitCode = 0
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\Bitlocker\Logs_Bitlocker\LogFile.txt"
+$logfilepath = "$LogDirectory\LogFile.txt"
 
 #Here it's a variable for tested the differents value of switch (line 61) just modify the variable with values next : 
 # "EncryptionInProgress","FullyEncrypted" or "FullyDecrypted"

@@ -23,7 +23,7 @@ $ExitCode = 0
 $LogDirectory = "C:\Users\Administrateur\Desktop\RequestApiGit"
 
 #PATH LOGFILE \MODIFY THE PATH IF YOU NEED
-$LogFilePath = "C:\Users\Administrateur\Desktop\RequestApiGit\LogApi.txt"
+$LogFilePath = "$LogDirectory\LogApi.txt"
 
 #==================================================================================================================
 # FUNCTION DECLARATION

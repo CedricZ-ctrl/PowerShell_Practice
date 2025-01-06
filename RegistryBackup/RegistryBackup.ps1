@@ -21,7 +21,7 @@ $ExitCode = 0
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\LogFile.txt"
+$logfilepath = "$LogDirectory\LogFile.txt"
 
 #path backup registry 
 $RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Notepad.reg"

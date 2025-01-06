@@ -21,3 +21,5 @@
 [11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\UserData\Logs 
 [11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\Scripts 
 [11/12/2024-16:35:19][INFO] All directory already : C:\ToolKit\Backup 
+[29/12/2024-08:39:38][INFO] The Rule 'FPS-SMB-In-TCP' with for Description: 'Règle de trafic entrant pour le partage de fichiers et d’imprimantes pour autoriser la transmission et la réception de blocs SMB (Server Message Block) par le biais de canaux nommés. [TCP 445]' is Activate
+[29/12/2024-08:39:38][Warning] The rule 'FPS-SMB-In-TCP' not found

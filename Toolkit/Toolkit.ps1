@@ -22,7 +22,7 @@ $ExitCode = 0
 $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
- $logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit\LogFile.txt"
+ $logfilepath = "$LogDirectory\LogFile.txt"
 
 
 
@@ -50,7 +50,6 @@ function Write-log {
 }
 # this function create tree structure if latter don't created or if Directory is missing and  write informations in log with function write log
 function SetDirectory () {
-
 try {
     $Directory = @("C:\ToolKit",
                    "C:\ToolKit\UserData",

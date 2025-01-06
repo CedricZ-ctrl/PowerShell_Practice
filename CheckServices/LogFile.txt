@@ -31,3 +31,7 @@
 [07/12/2024-23:53:56][INFO] Service 'wuauserv' is already Running
 [07/12/2024-23:53:56][INFO] Servce 'Spooler' was stopped and now he's started
 [07/12/2024-23:53:56][INFO] Service 'Dhcp' is already Running
+[09/12/2024-19:13:17][INFO] Servce 'wuauserv' was stopped and now he's started
+[09/12/2024-19:13:17][INFO] Service 'Spooler' is already Running
+[09/12/2024-19:13:17][INFO] Service 'Dhcp' is already Running
+[09/12/2024-19:13:17][INFO] Service 'Schedule' is already Running

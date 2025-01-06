@@ -23,7 +23,7 @@ $ExitCode = 0
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckService"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckService\LogFile.txt"
+$logfilepath = "$LogDirectory\LogFile.txt"
 
 # list service name do you want check \ MODIFY THE NAME SERVICE TO SUIT FOR YOU NEED
 $listservices = "wuauserv","Spooler","Dhcp","Schedule"
