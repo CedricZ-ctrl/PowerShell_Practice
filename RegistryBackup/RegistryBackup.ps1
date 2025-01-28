@@ -26,10 +26,24 @@ $logfilepath = "$LogDirectory\LogFile.txt"
 #path backup registry 
 $RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Notepad.reg"
 
+#date time log
+$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+
+
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
 #
+function HeaderLog {
+    if (!(Test-Path -Path $LogDirectory)){
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
+    }
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "START SCRIPT: RegistryBackup.ps1" -Force
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "Date : $($timestamp)"
+    Add-Content $LogFilePath -Value "============================================================="
+}
 
 # this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
@@ -50,6 +64,16 @@ function Write-log {
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
 
+function EndLog {
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
+    }
+    Add-Content $logfilepath -value "============================================================" 
+    Add-Content $logfilepath -Value "   END SCRIPT "
+    Add-Content $logfilepath -Value "Date : $($timestamp):"
+    Add-Content $logfilepath -Value "============================================================"
+}
+    
 
 function ExportReg {
     try {

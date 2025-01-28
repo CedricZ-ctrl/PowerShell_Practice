@@ -1,0 +1,20 @@
+=============================================================
+START SCRIPT: ChecConfigWindows.ps1
+=============================================================
+Date : 28/01/2025-20:39:33
+=============================================================
+[28/01/2025-20:39:33][Start Inventory] === Start Inventory ===
+[28/01/2025-20:39:33][Informations System] NameBIOS : F13   
+[28/01/2025-20:39:33][Informations System] modelPC : B550 AORUS ELITE V2   
+[28/01/2025-20:39:33][Informations System] DomainPC : WORKGROUP   
+[28/01/2025-20:39:33][Informations System] NamePC : DESKTOP-8BB22F1   
+[28/01/2025-20:39:33][Informations System] Socketproc : AM4   
+[28/01/2025-20:39:33][Informations System] VersionBios : ALASKA - 1072009   
+[28/01/2025-20:39:33][Informations System] NameProc : AMD Ryzen 5 3600 6-Core Processor                 
+[28/01/2025-20:39:33][INFO] The DESKTOP-8BB22F1 has an ethernet interface with the ip  192.168.1.108
+[28/01/2025-20:39:33][INFO] Service 'wuauserv' is already Running
+[28/01/2025-20:39:33][INFO] Service 'Dhcp' is already Running
+============================================================
+   END SCRIPT 
+Date : 28/01/2025-20:39:33:
+============================================================

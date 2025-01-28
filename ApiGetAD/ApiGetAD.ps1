@@ -25,10 +25,23 @@ $LogDirectory = "C:\Users\Administrateur\Desktop\RequestApiGit"
 #PATH LOGFILE \MODIFY THE PATH IF YOU NEED
 $LogFilePath = "$LogDirectory\LogApi.txt"
 
+# Write date log 
+$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
 #
+function HeaderLog {
+    if (!(Test-Path -Path $LogDirectory)){
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
+    }
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "START SCRIPT: ApiGetAd.ps1" -Force
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "Date : $($timestamp)"
+    Add-Content $LogFilePath -Value "============================================================="
+}
+
 # this function write-log, write informations of du script  in $LogFilePath and $LogDirectory with date and hours 
 function Write-log {
     param(
@@ -41,11 +54,19 @@ function Write-log {
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $LogFilePath -Force
     }
-    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+   
     Add-Content -Path $LogFilePath -Value "[$timestamp][$Event] $Message"
 }
 
-
+function EndLog {
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
+    }
+    Add-Content $logfilepath -value "============================================================" 
+    Add-Content $logfilepath -Value "   END SCRIPT "
+    Add-Content $logfilepath -Value "Date : $($timestamp):"
+    Add-Content $logfilepath -Value "============================================================"
+}
 #FUNCTION API FACTICE JSONPLACEHOLDER FOR EXAMPLE, GET A LIST USERS, WITH FILTER ON NAME,ID,ADDRESS,WEBSITE and CompanyName
 function ApiGetJsonPlaceHolder {
     $responses = Invoke-RestMethod -Uri "https://jsonplaceholder.typicode.com/users" -Method Get 
@@ -117,6 +138,20 @@ try {
     }
 }
 
+#==================================================================================================================
+# MAIN 
+#==================================================================================================================
+HeaderLog
 
-ApiGetJsonPlaceHolder
+try {
+    ApiGetJsonPlaceHolder
+
+    EndLog
+}
+catch {
+    $ExitCode = 1
+    $Message = "$_"
+    Write-log -Event "ERROR" -Message $Message
+}
+
 

@@ -28,9 +28,24 @@ $logfilepath = "$LogDirectory\LogFile.txt"
 # don't forget change testdisk by statedisk to tested
 $statedisk = "EncryptionInProgress" # fore exemple
 
+#date time 
+$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
+function HeaderLog {
+    if (!(Test-Path -Path $LogDirectory)){
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
+    }
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "START SCRIPT: CheckBitLocker.ps1" -Force
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "Date : $($timestamp)"
+    Add-Content $LogFilePath -Value "============================================================="
+}
+
+
 function Write-log {
     param(
         [string]$Message,
@@ -43,13 +58,18 @@ function Write-log {
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
     }
-
-    # Add a message and event in your log
-    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
+function EndLog {
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
+    }
+    Add-Content $logfilepath -value "============================================================" 
+    Add-Content $logfilepath -Value "   END SCRIPT "
+    Add-Content $logfilepath -Value "Date : $($timestamp):"
+    Add-Content $logfilepath -Value "============================================================"
+}
 
-#
 function testdisk ()   {    
     $checkstatus = (Get-BitLockerVolume -MountPoint "C:" | select VolumeStatus).VolumeStatus
     return $checkstatus
@@ -58,6 +78,7 @@ function testdisk ()   {
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
+HeaderLog 
 
 switch (testdisk) {
 
@@ -82,7 +103,9 @@ switch (testdisk) {
 
 }
 
-exit 
+Endlog
+
+exit
 
 #======================================================================================================================
 # END OF SCRIPT

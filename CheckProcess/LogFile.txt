@@ -1,6 +1,13 @@
-[11/12/2024-16:49:04][INFO] Process is running : PuTTY
-[11/12/2024-16:49:04][INFO]  The Process  PuTTY has started ! 
-[11/12/2024-16:49:04][INFO] Process is running : Notepad++
-[11/12/2024-16:49:04][INFO]  The Process  Notepad++ has started ! 
-[11/12/2024-16:49:04][WARNING] Not found processus_unknow, starting now ... 
-[11/12/2024-16:49:04][WARNING] failed to start processus_unknow, Exitcode 1:This command cannot be run due to the error: An error occurred trying to start process 'processus_unknow' with working directory 'B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess'. Le fichier spécifié est introuvable.
+=============================================================
+START SCRIPT: CheckProcess.ps1
+=============================================================
+Date : 
+=============================================================
+[28/01/2025-20:45:05][WARNING] Not found PuTTY, starting now ... 
+[28/01/2025-20:45:06][INFO]  The Process  PuTTY has started ! 
+[28/01/2025-20:45:06][WARNING] Not found Notepad++, starting now ... 
+[28/01/2025-20:45:07][INFO]  The Process  Notepad++ has started ! 
+============================================================
+   END SCRIPT 
+Date : :
+============================================================

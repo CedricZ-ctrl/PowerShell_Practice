@@ -26,10 +26,23 @@ $logfilepath = "$LogDirectory\LogFile.txt"
 # add process you want check \MODIFY NAME PROCESS TO SUIT FOR YOU NEED
 $NameProcess = "PuTTY","Notepad++"   #"processus_unknow" it's a fake processus for generate an error in log with the try-catch, check the logs for examples
 
+#date time 
+$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
 #
+function HeaderLog {
+    if (!(Test-Path -Path $LogDirectory)){
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
+    }
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "START SCRIPT: CheckProcess.ps1" -Force
+    Add-Content $LogFilePath -Value "============================================================="
+    Add-Content $LogFilePath -Value "Date : $($timestamp)"
+    Add-Content $LogFilePath -Value "============================================================="
+}
+
 # this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
     param(
@@ -43,12 +56,17 @@ function Write-log {
     if (!(Test-Path -Path $logfilepath)) {
         New-Item -ItemType File -Path $logfilepath -Force
     }
-
-    
-    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
-
+function EndLog {
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
+    }
+    Add-Content $logfilepath -value "============================================================" 
+    Add-Content $logfilepath -Value "   END SCRIPT "
+    Add-Content $logfilepath -Value "Date : $($timestamp):"
+    Add-Content $logfilepath -Value "============================================================"
+}
 
 #
 # this function check if $NameProces is running or not, if not running so we start process, and write information in $logfilepath with the function Write-log
@@ -87,7 +105,16 @@ try {
 # MAIN 
 #==================================================================================================================
 
-CheckProcess 
+HeaderLog
+try {
+    CheckProcess 
+}
+catch {
+    $ExitCode = 1
+    $Message = "$_"
+    Write-log -Event "ERROR" -Message $Message
+}
+EndLog
 
 #======================================================================================================================
 # END OF SCRIPT
