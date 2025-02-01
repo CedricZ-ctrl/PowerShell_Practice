@@ -21,7 +21,7 @@ $ExitCode = 0
 $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\NetFireWallRules"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\NetFireWallRules\LogFireWall.txt"
+$logfilepath = "$LogDirectory\LogFireWall.txt"
 
 #date time log
 $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
@@ -156,7 +156,10 @@ function CheckRuleSMB {
 
 #=============================================================================================================
 #MAIN
-#
+#==============================================================================================================================
+
+
+
 HeaderLog
 try{
 CheckRuleRDP
@@ -170,4 +173,6 @@ catch {
     
     
 }
+#=============================================================================================================
+#END
 #==============================================================================================================================

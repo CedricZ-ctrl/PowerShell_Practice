@@ -1,19 +1,12 @@
-[29/12/2024-11:37:05][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' with for Description:'Bureau à distance' is Enable
-[29/12/2024-11:37:08][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
-[29/12/2024-11:37:09][INFO] The Rule 'FPS-SMB-In-TCP' with for Description: 'Partage de fichiers et d’imprimantes' is Enable, 
-[29/12/2024-11:37:12][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
-[29/12/2024-12:01:51][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
-[29/12/2024-12:01:54][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
-[29/12/2024-12:02:22][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' with for Description:'Bureau à distance' is Enable
-[29/12/2024-12:02:25][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
-[29/12/2024-12:02:28][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
-[29/12/2024-12:23:13][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' with for Description:'Bureau à distance' is Enable
-[29/12/2024-12:23:16][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
-[29/12/2024-12:23:17][INFO] The Rule 'FPS-SMB-In-TCP' with for Description: 'Partage de fichiers et d’imprimantes' is Enable, 
-[29/12/2024-12:23:20][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
-[29/12/2024-12:26:03][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' with for Description:'Bureau à distance' is Enable
-[29/12/2024-12:26:06][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
-[29/12/2024-12:26:07][INFO] The Rule 'FPS-SMB-In-TCP' with for Description: 'Partage de fichiers et d’imprimantes' is Enable, 
-[29/12/2024-12:26:10][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
-[29/12/2024-14:52:11][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
-[29/12/2024-14:52:14][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
+=============================================================
+START SCRIPT: SetFireWallRules.ps1
+=============================================================
+Date : 01/02/2025-14:50:40
+=============================================================
+[01/02/2025-14:50:40][INFO] The Rule 'RemoteDesktop-UserMode-In-TCP' has ben successfully disabled
+[01/02/2025-14:50:40][INFO] The Rule 'FPS-SMB-In-TCP' with for Description: 'Partage de fichiers et d’imprimantes' is Enable, 
+[01/02/2025-14:50:40][INFO] The rule 'FPS-SMB-In-TCP' has been successfully disabled
+============================================================
+   END SCRIPT 
+Date : 01/02/2025-14:50:40:
+============================================================
