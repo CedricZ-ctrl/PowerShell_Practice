@@ -1,0 +1,18 @@
+=============================================================
+START SCRIPT: RegistryBackup.ps1
+Date : 01/02/2025-15:42:17
+=============================================================
+[01/02/2025-15:42:17][INFO] the backup of the key registry is save in : B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup is create
+============================================================
+   END SCRIPT 
+Date : 01/02/2025-15:42:17:
+============================================================
+=============================================================
+START SCRIPT: RegistryBackup.ps1
+Date : 01/02/2025-15:42:36
+=============================================================
+[01/02/2025-15:42:36][INFO] Registry restored from :B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg
+============================================================
+   END SCRIPT 
+Date : 01/02/2025-15:42:36:
+============================================================

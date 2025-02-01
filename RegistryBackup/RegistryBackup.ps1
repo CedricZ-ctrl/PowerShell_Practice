@@ -21,11 +21,11 @@ $ExitCode = 0
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "$LogDirectory\LogFile.txt"
+$logfilepath = "$LogDirectory\LogRegBackup.txt"
 
 #path backup registry 
-$RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Notepad.reg"
-
+$RegDir = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup"
+$RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg"
 #date time log
 $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
 
@@ -40,7 +40,6 @@ function HeaderLog {
     }
     Add-Content $LogFilePath -Value "============================================================="
     Add-Content $LogFilePath -Value "START SCRIPT: RegistryBackup.ps1" -Force
-    Add-Content $LogFilePath -Value "============================================================="
     Add-Content $LogFilePath -Value "Date : $($timestamp)"
     Add-Content $LogFilePath -Value "============================================================="
 }
@@ -59,8 +58,6 @@ function Write-log {
         New-Item -ItemType File -Path $logfilepath -Force
     }
 
-    # add a message and event in your log
-    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
 
@@ -77,11 +74,12 @@ function EndLog {
 
 function ExportReg {
     try {
-        if (!(Test-Path -Path $RegFile)) {
-
-         # choose the key registry you need 
-        reg export HKLM\SOFTWARE\Microsoft\Notepad $RegFile
-        $Message ="the backup of the key registry $RegFile is create"
+        if (!(Test-Path -Path $RegDir)) {
+            New-Item -Path $RegDir -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
+        }
+        if (!(Test-Path $RegFile)){
+        reg export HKLM\SOFTWARE\Microsoft\Notepad $RegFile /y
+        $Message ="the backup of the key registry is save in : $RegDir is create"
         Write-log -Event "INFO" -Message $Message
     }
     else {
@@ -101,8 +99,9 @@ function ExportReg {
 function ImportReg {
     try {
         if (Test-Path -Path $RegFile) {
-           reg import $RegFile
-            $Message = "Registry restored from : $RegFile"
+
+           reg import B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg 
+            $Message = "Registry restored from :$Regfile"
             Write-log -Event "INFO" -Message $Message
         }
         else {
@@ -124,13 +123,14 @@ $Choice = Read-Host "What do you want ? Import or Export ?"
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
+HeaderLog
 switch ($Choice)
  {
     "Export" { ExportReg }
     "Import" { ImportReg }
     Default { Write-Host " invalid choice, exiting script"}
 }
-
+EndLog
 #======================================================================================================================
 # END OF SCRIPT
 #======================================================================================================================
