@@ -22,7 +22,7 @@ $ExitCode = 0
 $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
- $logfilepath = "$LogDirectory\LogFile.txt"
+ $logfilepath = "$LogDirectory\LogToolKit.txt"
 
 # date time log 
 $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"

@@ -1,0 +1,32 @@
+=============================================================
+START SCRIPT: ToolKit.ps1
+=============================================================
+Date : 01/02/2025-15:46:19
+=============================================================
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit 
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit\UserData 
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit\UserData\Documents 
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit\UserData\Download 
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit\UserData\Logs 
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit\Scripts 
+[01/02/2025-15:46:19][INFO] All directory already : C:\ToolKit\Backup 
+============================================================
+   END SCRIPT 
+Date : 01/02/2025-15:46:19:
+============================================================
+=============================================================
+START SCRIPT: ToolKit.ps1
+=============================================================
+Date : 01/02/2025-15:47:15
+=============================================================
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit 
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit\UserData 
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit\UserData\Documents 
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit\UserData\Download 
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit\UserData\Logs 
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit\Scripts 
+[01/02/2025-15:47:15][INFO] Creating missing directories : C:\ToolKit\Backup 
+============================================================
+   END SCRIPT 
+Date : 01/02/2025-15:47:15:
+============================================================
