@@ -17,7 +17,6 @@
 # code exit initial
 $ExitCode = 0
 
-
 #Path LogDirectory\ MODIFY THE PATH TO SUIT  FOR YOUR NEED
 $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\ToolKit"
 

@@ -1,0 +1,27 @@
+[15/12/2024-10:31:46][INFO] The service spooler is already running
+[15/12/2024-10:31:48][Start Inventory] === Start Inventory ===
+[15/12/2024-10:31:48][Informations System] DomainPC : WORKGROUP   
+[15/12/2024-10:31:48][Informations System] NameBIOS : F13   
+[15/12/2024-10:31:48][Informations System] NamePC : DESKTOP-8BB22F1   
+[15/12/2024-10:31:48][Informations System] modelPC : B550 AORUS ELITE V2   
+[15/12/2024-10:31:48][Informations System] VersionBios : ALASKA - 1072009   
+[15/12/2024-10:31:48][Informations System] Socketproc : AM4   
+[15/12/2024-10:31:48][Informations System] NameProc : AMD Ryzen 5 3600 6-Core Processor                 
+[15/12/2024-10:32:06][INFO] The Service spooler was stopped and now he's started
+[15/12/2024-10:32:08][Start Inventory] === Start Inventory ===
+[15/12/2024-10:32:08][Informations System] DomainPC : WORKGROUP   
+[15/12/2024-10:32:08][Informations System] NameBIOS : F13   
+[15/12/2024-10:32:08][Informations System] NamePC : DESKTOP-8BB22F1   
+[15/12/2024-10:32:08][Informations System] modelPC : B550 AORUS ELITE V2   
+[15/12/2024-10:32:08][Informations System] VersionBios : ALASKA - 1072009   
+[15/12/2024-10:32:08][Informations System] Socketproc : AM4   
+[15/12/2024-10:32:08][Informations System] NameProc : AMD Ryzen 5 3600 6-Core Processor                 
+[18/12/2024-21:02:25][INFO] The service spooler is already running
+[18/12/2024-21:02:28][Start Inventory] === Start Inventory ===
+[18/12/2024-21:02:28][Informations System] NameProc : AMD Ryzen 5 3600 6-Core Processor                 
+[18/12/2024-21:02:28][Informations System] NamePC : DESKTOP-8BB22F1   
+[18/12/2024-21:02:28][Informations System] modelPC : B550 AORUS ELITE V2   
+[18/12/2024-21:02:28][Informations System] Socketproc : AM4   
+[18/12/2024-21:02:28][Informations System] VersionBios : ALASKA - 1072009   
+[18/12/2024-21:02:28][Informations System] NameBIOS : F13   
+[18/12/2024-21:02:28][Informations System] DomainPC : WORKGROUP   
