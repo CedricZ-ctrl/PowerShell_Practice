@@ -31,6 +31,14 @@ $listservices = "wuauserv","Dhcp"
 
 # date time 
  $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+
+ #path destination file .json systeme configuration 
+ $Pathconfig = "C:\Windows\Temp\"
+ $Fileconfig = "$Pathconfig\InfoSystem.json"
+
+ #array finish 
+ $Report = @{}
+
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
@@ -90,7 +98,7 @@ function InventorySystem () {
             modelPC = (Get-CimInstance -ClassName Win32_ComputerSystem).Model
         }
 
-        $script:NamePC = $infosystem.NamePC
+        
     
         $Message = "=== Start Inventory ==="
         Write-log -Event "Start Inventory" -Message $Message
@@ -107,6 +115,7 @@ function InventorySystem () {
         $Message = "Error collecting system information : $_ "
         Write-log -Event "ERROR" -Message $Message
       }
+      $Report.SystemInfo = $infosystem 
     }
 
 function GetIpAddress {
@@ -115,8 +124,9 @@ try {
 
     $NetInfo = Get-NetIPAddress | Where-Object  { $_.InterfaceAlias -like "Ether*et"}
     if ($NetInfo.InterfaceAlias -like "Ethernet") {
-        $Message = "The $script:NamePC has an ethernet interface with the ip  $($NetInfo.IPAddress)"
+        $Message = "The interface  has an ethernet interface with the ip  $($NetInfo.IPAddress)"
         Write-log -Event "INFO" -Message $Message
+        
     }
     else {
         $Message = "information unknow "
@@ -128,11 +138,13 @@ catch {
     $ExitCode = 1 
     $Message = "An error occurred : $($ExitCode): $_"
     Write-log -Event "ERROR" -Message $Message
-}
+    }
+    $Report.Network = $NetInfo.IPAddress
 }
 
 
-function GetStatusService{
+function GetStatusService {
+    $ServicesStates = @{}
 foreach ($services in $listservices) {
     Try{
         $serviceStatus = get-service -Name $services
@@ -150,6 +162,7 @@ foreach ($services in $listservices) {
             $Message = " Service '$services' is an unknow state : $($serviceStatus.Status)"
             write-log -Event "WARNING" -Message $Message
         }
+        $ServicesStates[$services] = $serviceStatus.Status
     }
     catch {
         $ExitCode = 1 
@@ -157,24 +170,31 @@ foreach ($services in $listservices) {
         Write-log -Message $Message -Event "ERROR"
     }
 }
+    $Report.Services = $ServicesStates
+    $Message = "The File 'InfoSystem.json' set in directory : C:\Windows\Temp"
+    Write-log -Message $Message -Event "INFO"
 }
+
+
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
 HeaderLog
-try{
-InventorySystem 
+try {
+    InventorySystem 
 
 GetIpAddress
 
 GetStatusService
+
+$Report | ConvertTo-Json -Depth 10 | Set-Content -Path $Fileconfig
+}
+catch {
+    $ExitCode = 1 
+    $Message = " Error occurred : $_"
+    Write-log -Message $Message -Event "ERROR"
 }
 EndLog
-catch {
-    $ExitCode = 1
-    $Message = "$_"
-    Write-log -Event "ERROR" -Message $Message
-}
 #======================================================================================================================
 # END OF SCRIPT
 #======================================================================================================================
