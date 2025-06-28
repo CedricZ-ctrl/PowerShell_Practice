@@ -1,0 +1,18 @@
+{
+    "SystemInfo":  {
+                       "NameBIOS":  "F13",
+                       "modelPC":  "B550 AORUS ELITE V2",
+                       "DomainPC":  "WORKGROUP",
+                       "NamePC":  "DESKTOP-8BB22F1",
+                       "Socketproc":  "AM4",
+                       "VersionBios":  "ALASKA - 1072009",
+                       "NameProc":  "AMD Ryzen 5 3600 6-Core Processor              "
+                   },
+    "Services":  {
+                     "Dhcp":  4,
+                     "wuauserv":  4
+                 },
+    "Network":  "192.168.1.108"
+}
+
+// This is how your file .json be must, after launch the Script 'CheckConfigWindows'  
