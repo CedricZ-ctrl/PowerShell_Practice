@@ -9,7 +9,7 @@
                        "NameProc":  "AMD Ryzen 5 3600 6-Core Processor              "
                    },
     "Services":  {
-                     "Dhcp":  4,
+                     "Dhcp":  4,        //  1 'Stopped', 2'StartPending',3'StopPending',4'Running',5'ContinuePending',6'PausePending',7'Paused'
                      "wuauserv":  4
                  },
     "Network":  "192.168.1.108"
