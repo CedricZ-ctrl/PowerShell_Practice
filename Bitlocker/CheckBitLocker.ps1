@@ -70,42 +70,55 @@ function EndLog {
     Add-Content $logfilepath -Value "============================================================"
 }
 
-function testdisk ()   {    
-    $checkstatus = (Get-BitLockerVolume -MountPoint "C:" | select VolumeStatus).VolumeStatus
-    return $checkstatus
+function testdisk  {   
+try {
+    $checkstatus = Get-BitLockerVolume | Where-Object {$_.VolumeStatus -like "FullyDecrypted"}
+    
+    foreach ($State in $checkstatus){
+        if ($State.VolumeStatus -eq "FullyDecrypted"){
+
+            $Message = "the disk $($State.MountPoint) : is $($State.VolumeStatus)"
+            Write-log -Event "INFO" -Message $Message
+            Start-sleep -Seconds 5
+            
+            $ActiveBitlocker = Enable-BitLocker -MountPoint $State.MountPoint -EncryptionMethod XtsAes256 -UsedSpaceOnly -TpmProtector
+            $RecoveryKey = Add-BitLockerKeyProtector -MountPoint $State.MountPoint -RecoveryPasswordProtector
+            $RecoveryPass = $RecoveryKey.RecoveryPasswd
+            $mountRaw = $State.MountPoint
+            $mountSafe = $mountRaw -replace ':','-'
+            $outputPath = "C:\Windows\tmp\bitlocker-recovery-$mountSafe.txt" 
+
+            $RecoveryPass | Out-File -FilePath $outputPath -Encoding  utf8
+
+            $Message = "Encryption started for $($State.MountPoint). Recovery Key saved in $outputPath"
+            Write-log -Event "INFO" -Message $Message
+        }
+        else {
+            $Message = "Encryption started for $($State.MountPoint). Recovery key saved in $outputPath"
+            Write-log -Event "INFO" -Message $Message
+        }
+    }
+    
 }
+catch {
+    $Message = " :$_"
+    Write-log -Event "ERROR" -Message $Message
+} 
+    
+}
+
+function EnableBitlocker {
+
+}
+
 
 #==================================================================================================================
 # MAIN 
 #==================================================================================================================
 HeaderLog 
-
-switch (testdisk) {
-
-"EncryptionInProgress" {
-    $ExitCode = 2
-    $Message = "The Disk is in progress encryption,ExitCode:$($ExitCode)"
-    Write-log -Message $Message -Event "Warning"
-}
-
-"FullyEncrypted" {
-    $ExitCode = 0
-    $Message = "The Disk is Completly Crypted:$($ExitCode):"
-    Write-log -Message $Message -Event "Success"
-
-}
-
- "FullyDecrypted" {
-    $ExitCode = 3
-    $Message = "The disk is not encrypted ExitCode:$($ExitCode)"
-    Write-log -Message $Message -Event "Error"
-}
-
-}
-
+testdisk
 Endlog
 
-exit
 
 #======================================================================================================================
 # END OF SCRIPT
