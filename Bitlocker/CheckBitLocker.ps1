@@ -70,7 +70,7 @@ function EndLog {
     Add-Content $logfilepath -Value "============================================================"
 }
 
-function testdisk  {   
+function checkBitlockerV1  {   
 try {
     $checkstatus = Get-BitLockerVolume | Where-Object {$_.VolumeStatus -like "FullyDecrypted"}
     
@@ -116,7 +116,7 @@ function EnableBitlocker {
 # MAIN 
 #==================================================================================================================
 HeaderLog 
-testdisk
+checkBitlockerV1
 Endlog
 
 
