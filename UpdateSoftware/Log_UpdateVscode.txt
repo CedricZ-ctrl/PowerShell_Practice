@@ -1,0 +1,11 @@
+=============================================================
+START SCRIPT: UpdateVscode 
+Date : 06/07/2025-14:18:49
+=============================================================
+[06/07/2025-14:18:49][INFO] The path B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\UpdateSoftware\VSCodeLatest\Versions no exist, creating 
+[06/07/2025-14:18:49][SUCCES] Download Succes ! 
+[06/07/2025-14:18:49][INFO] an version of vscode latest avaible, download running ...
+============================================================
+END SCRIPT
+Date : 06/07/2025-14:18:49:
+============================================================
