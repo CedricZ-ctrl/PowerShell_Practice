@@ -1,2 +1,6 @@
 UpdateSoftware/VSCodeLatest/Versions/*.exe
 UpdateSoftware/
+ApiGetAD/
+Do_Until/
+NetFireWallRules/
+Set-WSUS-Client/
