@@ -21,7 +21,7 @@ $ExitCode = 0
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "$LogDirectory\LogFile.txt"
+$logfilepath = "$LogDirectory\LogCheckProcess.txt"
 
 # add process you want check \MODIFY NAME PROCESS TO SUIT FOR YOU NEED
 $NameProcess = "PuTTY","Notepad++"   #"processus_unknow" it's a fake processus for generate an error in log with the try-catch, check the logs for examples
