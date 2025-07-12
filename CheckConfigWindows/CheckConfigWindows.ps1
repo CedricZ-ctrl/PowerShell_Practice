@@ -121,7 +121,7 @@ function GetIpAddress {
 try {
     
 
-    $NetInfo = Get-NetIPAddress | Where-Object  { $_.InterfaceAlias -like "Ether*et"}
+    $NetInfo = Get-NetIPAddress | Where-Object  { $_.InterfaceAlias -like "Ethernet"}
     if ($NetInfo.InterfaceAlias -like "Ethernet") {
         $Message = "The interface  has an ethernet interface with the ip  $($NetInfo.IPAddress)"
         Write-log -Event "INFO" -Message $Message
