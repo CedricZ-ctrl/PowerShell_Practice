@@ -1,7 +1,7 @@
 
 #***********************************************************************************************
 #                                                                                              *
-# file : CheckService.ps1                                                                      *
+# file : CheckServices.ps1                                                                      *
 #                                                                                              *
 # Version : 1.0                                                                                *
 #                                                                                              *
@@ -17,7 +17,6 @@
 #
 # code exit initial
 $ExitCode = 0
-
 
 ## #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices"
@@ -45,8 +44,6 @@ function HeaderLog {
     Add-Content $LogFilePath -Value "Date : $($timestamp)"
     Add-Content $LogFilePath -Value "============================================================="
 }
-
-
 # this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
     param(
@@ -62,7 +59,6 @@ function Write-log {
     }
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
-
 function EndLog {
     if (!(Test-Path -Path $LogDirectory)) {
         New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
@@ -112,9 +108,7 @@ catch {
      $ExitCode = 1
      $Message = "$_"
      Write-log -Event "ERROR" -Message $Message
-    
-    
-}
+    }
 #======================================================================================================================
 # END OF SCRIPT
 #======================================================================================================================
