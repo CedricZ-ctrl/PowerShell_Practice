@@ -1,6 +1,6 @@
 #***********************************************************************************************
 #                                                                                              *
-# file : CheckService.ps1                                                                      *
+# file : CheckConfigWindows.ps1                                                                      *
 #                                                                                              *
 # Version : 1.0                                                                                *
 #                                                                                              *
@@ -18,7 +18,6 @@
 #
 # code exit initial
 $ExitCode = 0
-
 
 ## #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
 $LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckConfigWindows"
