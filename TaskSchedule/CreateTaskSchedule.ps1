@@ -21,7 +21,7 @@ $ExitCode = 0
 $LogDirectory ="B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\TaskSchedule"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
- $logfilepath = "$LogDirectory\LogTaskSchedule.txt"
+$logfilepath = "$LogDirectory\LogTaskSchedule.txt"
 
 # date time log 
 $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
@@ -67,11 +67,11 @@ function EndLog {
     Add-Content $logfilepath -Value "============================================================"
 }
 
-function CreateTaksSchedule {
+function CreateTaskSchedule {
     $ScriptToUse = "C:\Users\<USER>\ProgramData\Script\Script.ps1"
 
     # here choose you program you to want used, for example here it's PowerShell
-    $Action =   New-ScheduledTaskAsction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -Argument $ScriptToUse
+    $Action =   New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -Argument $ScriptToUse
     $Trigger = New-ScheduledTaskTrigger -AtLogOn 
     $Setting = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
     $InputObject = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Setting
