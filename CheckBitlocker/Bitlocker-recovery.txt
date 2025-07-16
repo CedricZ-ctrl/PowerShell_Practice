@@ -1,0 +1,1 @@
+Disk: C: - RecoveryKey: xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx
