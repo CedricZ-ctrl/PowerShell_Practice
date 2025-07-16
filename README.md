@@ -36,7 +36,7 @@ Each script is **well-commented** with clear instructions and easily customizabl
 | `RegistryBackup.ps1`     | Creates or restores registry backups                          |
 | `CreateTaskSchedule.ps1` | Creates scheduled tasks to automate script execution          |
 | `Toolkit.ps1`            | Creates a customizable folder structure for projects          |
-| 'CheckBitlocker.ps1'     | Check if disks is encrpyted, if not then Enable bitlocker
+| `CheckBitlocker.ps1`     | Check if disks is encrpyted, if not then Enable bitlocker
 
 ## 💡 Future Improvements
 
