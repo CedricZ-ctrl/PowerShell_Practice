@@ -1,13 +1,15 @@
 ﻿=============================================================
 START SCRIPT: ClearCache.ps1
 =============================================================
-Date : 
+Date : 26/04/2026-01:09:34
 =============================================================
-[26/04/2026-00:52:56][INFO] Il y avait : 21 elements dans le C:\Windows\Temp
-[26/04/2026-00:52:56][INFO] 21 deleted
-[26/04/2026-00:52:56][INFO] Il y avait : 114 elements dans le C:\Users\Bandit\AppData\Local\Temp
-[26/04/2026-00:52:56][INFO] 114 deleted
+[26/04/2026-01:09:34][INFO] Us have found :0 item in the path  C:\Windows\Temp
+[26/04/2026-01:09:34][INFO] 0 deleted in the path C:\Windows\Temp 
+[26/04/2026-01:09:34][INFO] Us have found :21 item in the path  C:\Users\Bandit\AppData\Local\Temp
+[26/04/2026-01:09:34][INFO] 21 deleted in the path C:\Users\Bandit\AppData\Local\Temp 
+[26/04/2026-01:09:34][INFO] Us have found :0 item in the path  C:\Windows\Prefetch
+[26/04/2026-01:09:34][INFO] 0 deleted in the path C:\Windows\Prefetch 
 ============================================================
 END SCRIPT 
-Date : :
+Date : 26/04/2026-01:09:34:
 ============================================================
