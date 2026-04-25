@@ -24,7 +24,7 @@ $LogDirectory = Join-Path -Path $env:ProgramData -ChildPath "LogsScriptPerso"
 $logfilepath = Join-Path -Path $LogDirectory -ChildPath "LogClearCache.log"
 
 # list service name do you want check \ MODIFY THE NAME SERVICE TO SUIT FOR YOU NEED
-$PathTemp = @("C:\Windows\Temp","$env:TEMP")
+$PathTemp = @("C:\Windows\Temp","$env:TEMP","C:\Windows\Prefetch")
 
 #==================================================================================================================
 # FUNCTION DECLARATION
