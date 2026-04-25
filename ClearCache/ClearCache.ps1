@@ -67,15 +67,15 @@ function GetInfoContentDirectory {
         foreach ($Path in $PathTemp) {
             if (Test-Path $Path) {
                 $CountItem = Get-ChildItem -Path $Path -Recurse | Measure-Object | Select-Object -ExpandProperty Count
-                $Message = "Il y avait : $($CountItem) elements dans le $Path"
+                $Message = "Us have found :$($CountItem) item in the path  $Path"
                 Write-log -Event "INFO" -Message $Message
 
                 Remove-Item -Path $Path -Recurse -ErrorAction SilentlyContinue 
-                $Message = "$($CountItem) deleted"
+                $Message = "$($CountItem) deleted in the path $Path "
                 Write-log -Event "INFO" -Message $Message
             }
             else {
-                $Message = "Le chemin $Path n'existe pas"
+                $Message = "The path $Path doesn't exists"
                 Write-log -Event "WARNING" -Message $Message
             }
         }
