@@ -13,14 +13,12 @@
 # ======================================================================================
 # VARIABLE DECLARATIONS                                                               
 #=======================================================================================
-#
-# Directory and file log 
-$LogDirectory = "C:\Users\<YourUser>\Desktop\Script\Logs"
-$LogFilePath = "$LogDirectory\LogBitLocker.txt"
-#
-# Date today
-$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
-#
+## #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
+$LogDirectory = Join-Path -Path $env:ProgramData -ChildPath "LogsScriptPerso"
+
+# Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
+$logfilepath = Join-Path -Path $LogDirectory -ChildPath "CheckBitLocker.log"
+
 # Path destination of "bitlocker-recovery" 
 $outputPath = "C:\Windows\Temp\bitlocker-recovery.txt"
 
@@ -29,28 +27,37 @@ $outputPath = "C:\Windows\Temp\bitlocker-recovery.txt"
 # ======================================================================================
 
 function HeaderLog {
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     if (!(Test-Path -Path $LogDirectory)){
-        New-Item -Path $LogDirectory -ItemType Directory -Force | Out-Null
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
     }
     Add-Content $LogFilePath -Value "============================================================="
-    Add-Content $LogFilePath -Value "START SCRIPT: CheckBitLocker.ps1"
+    Add-Content $LogFilePath -Value "START SCRIPT: CheckBitLocker.ps1" -Force
     Add-Content $LogFilePath -Value "============================================================="
-    Add-Content $LogFilePath -Value "Date : $timestamp"
+    Add-Content $LogFilePath -Value "Date : $($timestamp)"
     Add-Content $LogFilePath -Value "============================================================="
 }
+# this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
+function Write-log {
+    param(
+        [string]$Message,
+        [string]$Event
+    )
+    if (!(Test-Path -Path $LogDirectory)) {
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
+    }
 
-function Write-Log {
-    param([string]$Message, [string]$Event)
-    Add-Content -Path $LogFilePath -Value "[$(Get-Date -Format 'dd/MM/yyyy-HH:mm:ss')][$Event] $Message"
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+    Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
 
 function EndLog {
-    Add-Content $LogFilePath -Value "============================================================"
-    Add-Content $LogFilePath -Value "   END SCRIPT"
-    Add-Content $LogFilePath -Value "Date : $(Get-Date -Format 'dd/MM/yyyy-HH:mm:ss')"
-    Add-Content $LogFilePath -Value "============================================================"
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+    Add-Content $logfilepath -value "============================================================" 
+    Add-Content $logfilepath -Value "END SCRIPT "
+    Add-Content $logfilepath -Value "Date : $($timestamp):"
+    Add-Content $logfilepath -Value "============================================================"
 }
-
 function TestDisk {
     try {
         $disk = Get-BitLockerVolume -MountPoint "C:"
