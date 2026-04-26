@@ -27,8 +27,7 @@ $logfilepath = Join-Path -Path $LogDirectory -ChildPath "RegistryBackup.log"
 #path backup registry example 
 $RegDir = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup"
 $RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg"
-#date time log
-$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+
 
 
 #==================================================================================================================
