@@ -19,10 +19,10 @@
 $ExitCode = 0
 
 ## #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
-$LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckServices"
+$LogDirectory = Join-Path -Path $env:ProgramData -ChildPath "LogsScriptPerso"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "$LogDirectory\LogFile.txt"
+$logfilepath = Join-Path -Path $LogDirectory -ChildPath "CheckProcess.log"
 
 # list service name do you want check \ MODIFY THE NAME SERVICE TO SUIT FOR YOU NEED
 $listservices = "wuauserv","Spooler","Dhcp","Schedule"
@@ -35,6 +35,7 @@ $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
 #==================================================================================================================
 #
 function HeaderLog {
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     if (!(Test-Path -Path $LogDirectory)){
         New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
     }
@@ -50,21 +51,18 @@ function Write-log {
         [string]$Message,
         [string]$Event
     )
-    
-    if (!(Test-Path -Path $LogDirectory)) {
-        New-Item -ItemType Directory -Path $LogDirectory -Force
-    }
-    if (!(Test-Path -Path $logfilepath)) {
-        New-Item -ItemType File -Path $logfilepath -Force
-    }
-    Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
-}
-function EndLog {
     if (!(Test-Path -Path $LogDirectory)) {
         New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
     }
+
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+    Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
+}
+
+function EndLog {
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content $logfilepath -value "============================================================" 
-    Add-Content $logfilepath -Value "   END SCRIPT "
+    Add-Content $logfilepath -Value "END SCRIPT "
     Add-Content $logfilepath -Value "Date : $($timestamp):"
     Add-Content $logfilepath -Value "============================================================"
 }
