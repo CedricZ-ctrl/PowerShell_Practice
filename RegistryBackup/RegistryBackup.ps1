@@ -76,7 +76,7 @@ function ExportReg {
         }
         if (!(Test-Path $RegFile)){
         reg export HKLM\SOFTWARE\Microsoft\Notepad $RegFile /y
-        $Message ="the backup of the key registry is save in : $RegDir is create"
+        $Message ="the backup of the key registry of NotePad is save in : $RegDir"
         Write-log -Event "INFO" -Message $Message
     }
     else {
