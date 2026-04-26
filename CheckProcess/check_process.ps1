@@ -18,21 +18,21 @@
 $ExitCode = 0
 
 # #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
-$LogDirectory = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\CheckProcess"
+## #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
+$LogDirectory = Join-Path -Path $env:ProgramData -ChildPath "LogsScriptPerso"
 
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "$LogDirectory\LogCheckProcess.txt"
+$logfilepath = Join-Path -Path $LogDirectory -ChildPath "CheckProcess.log"
 
 # add process you want check \MODIFY NAME PROCESS TO SUIT FOR YOU NEED
 $NameProcess = "PuTTY","Notepad++"   #"processus_unknow" it's a fake processus for generate an error in log with the try-catch, check the logs for examples
 
-#date time 
-$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
 #
 function HeaderLog {
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     if (!(Test-Path -Path $LogDirectory)){
         New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
     }
@@ -42,28 +42,24 @@ function HeaderLog {
     Add-Content $LogFilePath -Value "Date : $($timestamp)"
     Add-Content $LogFilePath -Value "============================================================="
 }
-
 # this function write-log, write informations of du script  in $logfilepath and $LogDirectory with date and hours 
 function Write-log {
     param(
         [string]$Message,
         [string]$Event
     )
-
-    if (!(Test-Path -Path $LogDirectory)) {
-        New-Item -ItemType Directory -Path $LogDirectory -Force
-    }
-    if (!(Test-Path -Path $logfilepath)) {
-        New-Item -ItemType File -Path $logfilepath -Force
-    }
-    Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
-}
-function EndLog {
     if (!(Test-Path -Path $LogDirectory)) {
         New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
     }
+
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+    Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
+}
+
+function EndLog {
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content $logfilepath -value "============================================================" 
-    Add-Content $logfilepath -Value "   END SCRIPT "
+    Add-Content $logfilepath -Value "END SCRIPT "
     Add-Content $logfilepath -Value "Date : $($timestamp):"
     Add-Content $logfilepath -Value "============================================================"
 }
