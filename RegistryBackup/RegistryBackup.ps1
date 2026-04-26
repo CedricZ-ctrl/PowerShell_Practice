@@ -28,8 +28,6 @@ $logfilepath = Join-Path -Path $LogDirectory -ChildPath "RegistryBackup.log"
 $RegDir = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup"
 $RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg"
 
-
-
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
