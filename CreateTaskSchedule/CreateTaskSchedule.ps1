@@ -18,22 +18,23 @@
 $ExitCode = 0
 
 ## #check if Directory is not present \COPY AND PASTE, YOUR LOGFILE
-$LogDirectory = "C:\Users\user1\Desktop\Script\Logs"
+$LogDirectory = Join-Path -Path $env:ProgramData -ChildPath "LogsScriptPerso"
+
 # Path LogFile \ MODIFY THE PATH TO SUIT  FOR YOUR NEED
-$logfilepath = "$LogDirectory\Log_TaskSchedule.txt"
-# date time 
-$timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
+$logfilepath = Join-Path -Path $LogDirectory -ChildPath "CreateTaskScheduled.log"
 
 #==================================================================================================================
 # FUNCTION DECLARATION
 #==================================================================================================================
 #
 function HeaderLog {
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     if (!(Test-Path -Path $LogDirectory)){
         New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
     }
     Add-Content $LogFilePath -Value "============================================================="
-    Add-Content $LogFilePath -Value "START SCRIPT: Set Task Schedule" -Force
+    Add-Content $LogFilePath -Value "START SCRIPT: CreateTaskScheduled.ps1" -Force
+    Add-Content $LogFilePath -Value "============================================================="
     Add-Content $LogFilePath -Value "Date : $($timestamp)"
     Add-Content $LogFilePath -Value "============================================================="
 }
@@ -43,20 +44,16 @@ function Write-log {
         [string]$Message,
         [string]$Event
     )
-    
     if (!(Test-Path -Path $LogDirectory)) {
-        New-Item -ItemType Directory -Path $LogDirectory -Force
+        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
     }
-    if (!(Test-Path -Path $logfilepath)) {
-        New-Item -ItemType File -Path $logfilepath -Force
-    }
+
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content -Path $logfilepath -Value "[$timestamp][$Event] $Message"
 }
 
 function EndLog {
-    if (!(Test-Path -Path $LogDirectory)) {
-        New-Item -Path $LogDirectory -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
-    }
+    $timestamp = Get-Date -Format "dd/MM/yyyy-HH:mm:ss"
     Add-Content $logfilepath -value "============================================================" 
     Add-Content $logfilepath -Value "END SCRIPT "
     Add-Content $logfilepath -Value "Date : $($timestamp):"
