@@ -26,7 +26,11 @@ $logfilepath = Join-Path -Path $LogDirectory -ChildPath "RegistryBackup.log"
 
 #path backup registry example 
 $RegDir = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup"
-$RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg"
+$RegFile = "B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\CPU-Z.reg"
+
+#Set your path keyregistry if you need,here example CPU-Z
+$REGEXPORT = "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CPUID CPU-Z_is1"
+
 
 #==================================================================================================================
 # FUNCTION DECLARATION
@@ -72,8 +76,8 @@ function ExportReg {
             New-Item -Path $RegDir -ItemType Directory -Force -ErrorAction SilentlyContinue | out-null
         }
         if (!(Test-Path $RegFile)){
-        reg export HKLM\SOFTWARE\Microsoft\Notepad $RegFile /y
-        $Message ="the backup of the key registry of NotePad is save in : $RegDir"
+        reg export $REGEXPORT $RegFile /y
+        $Message ="the backup of the key registry $REGEXPORT save in : $RegDir"
         Write-log -Event "INFO" -Message $Message
     }
     else {
@@ -87,14 +91,11 @@ function ExportReg {
         Write-log -Event "WARNING" -Message $Message
         }
     }
-
-
-
 function ImportReg {
     try {
         if (Test-Path -Path $RegFile) {
 
-           reg import B:\VSCode_Exercice\Exercices_Powershell\PowerShell_Practice\RegistryBackup\Backup\NotePad.reg 
+            & reg import $RegFile
             $Message = "Registry restored from :$Regfile"
             Write-log -Event "INFO" -Message $Message
         }
