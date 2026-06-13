@@ -4,7 +4,12 @@
 #version : 1.0                                                                       #
 #date : 12/06/2026                                                                   #
 #                                                                                    #
-# this script allow recoery booksmarks deleted after update firefox                   # 
+# DESCRIPTION:                                                                       #
+# This script allows the recovery of bookmarks deleted after a Firefox update.       #
+#                                                                                    #
+# WARNING / USAGE NOTICE:                                                            #
+# This script should ONLY be used if bookmarks are completely missing from the       #
+# browser AND from the various current Firefox user profiles.                        #
 #                                                                                    #
 ######################################################################################
 
