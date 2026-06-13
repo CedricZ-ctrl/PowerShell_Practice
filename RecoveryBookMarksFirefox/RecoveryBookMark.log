@@ -1,0 +1,12 @@
+=============================================================
+START SCRIPT: RecoveryBookMarksFireFox.ps1
+=============================================================
+Date : 12/06/2026-21:30:20
+=============================================================
+[12/06/2026-21:30:21][INFO] the folder Recent Is : C:\Users\bvance\AppData\Roaming\Mozilla\Firefox\Profiles\e93tqj8j.default-release
+[12/06/2026-21:30:21][INFO] the folder old is : C:\Users\bvance\AppData\Roaming\Mozilla\Firefox\Profiles\478pldk4.default
+[12/06/2026-21:30:21][INFO] The e93tqj8j.default-release has been rename to: places.sqlite.old 
+============================================================
+END SCRIPT 
+Date : 12/06/2026-21:30:21:
+============================================================
